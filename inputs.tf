@@ -198,15 +198,15 @@ variable "db_info" {
 
 variable "appvm_config" {
   type = object({
-    subnet_name                   = string
-    public_ip_name                = string
-    allocation_method             = string
-    network_interface_name        = string
-    network_interface_ip_name     = string
-    private_ip_address_allocation = string
-    appvm_name                    = string
-    size                          = string
-    admin_username                = string
+    subnet_name = string
+    # public_ip_name                = string
+    # allocation_method             = string
+    # network_interface_name        = string
+    # network_interface_ip_name     = string
+    # private_ip_address_allocation = string
+    # appvm_name                    = string
+    size           = string
+    admin_username = string
     #key_name                      = string ##This is actually username i misunderstood initially further explanation go to appvm.tf
     public_key_path      = string
     os_disk_caching      = string
@@ -220,15 +220,15 @@ variable "appvm_config" {
 
   })
   default = {
-    subnet_name                   = "app"
-    public_ip_name                = "app_public_ip"
-    allocation_method             = "Static"
-    network_interface_name        = "appnic"
-    network_interface_ip_name     = "app_private_ip"
-    private_ip_address_allocation = "Dynamic"
-    appvm_name                    = "app"
-    size                          = "Standard_B1s"
-    admin_username                = "Dell"
+    subnet_name = "app"
+    # public_ip_name                = "app_public_ip"
+    # allocation_method             = "Static"
+    # network_interface_name        = "appnic"
+    # network_interface_ip_name     = "app_private_ip"
+    # private_ip_address_allocation = "Dynamic"
+    # appvm_name                    = "app"
+    size           = "Standard_B1s"
+    admin_username = "Dell"
     #key_name                      = "my_id_rsa.pub" #This is actually username i misunderstood initially further explanation go to appvm.tf
     public_key_path      = "~/.ssh/id_rsa.pub"
     os_disk_caching      = "ReadWrite"

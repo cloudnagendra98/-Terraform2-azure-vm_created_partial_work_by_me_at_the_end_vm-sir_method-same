@@ -1,8 +1,8 @@
 resource "azurerm_public_ip" "public_ip" {
-  name                = var.appvm_config.public_ip_name
+  name                = "app_public_ip"
   resource_group_name = azurerm_resource_group.ntier-resg.name
   location            = azurerm_resource_group.ntier-resg.location
-  allocation_method   = var.appvm_config.allocation_method
+  allocation_method   = "Static"
 
 
 
@@ -22,13 +22,13 @@ data "azurerm_subnet" "app" {
 }
 
 resource "azurerm_network_interface" "nifc" {
-  name                = var.appvm_config.network_interface_name
+  name                = "appnic"
   resource_group_name = azurerm_resource_group.ntier-resg.name
   location            = azurerm_resource_group.ntier-resg.location
   ip_configuration {
-    name                          = var.appvm_config.network_interface_ip_name
+    name                          = "app_private_ip"
     subnet_id                     = data.azurerm_subnet.app.id
-    private_ip_address_allocation = var.appvm_config.private_ip_address_allocation
+    private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.public_ip.id
   }
 
@@ -51,7 +51,7 @@ resource "azurerm_network_interface_security_group_association" "network_interfa
 }
 
 resource "azurerm_linux_virtual_machine" "appvm" {
-  name                = var.appvm_config.appvm_name
+  name                = "app"
   resource_group_name = azurerm_resource_group.ntier-resg.name
   location            = azurerm_resource_group.ntier-resg.location
   size                = var.appvm_config.size
