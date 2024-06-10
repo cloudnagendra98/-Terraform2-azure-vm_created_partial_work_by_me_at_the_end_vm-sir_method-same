@@ -40,6 +40,17 @@ appnsg_config = {
     access                     = "Allow"
     priority                   = "300"
     direction                  = "Inbound"
+    },
+    {
+      name                       = "openssh"
+      protocol                   = "Tcp"
+      source_address_prefix      = "*"
+      source_port_range          = "*"
+      destination_port_range     = 22
+      destination_address_prefix = "*"
+      access                     = "Allow"
+      priority                   = "310"
+      direction                  = "Inbound"
   }]
 }
 
